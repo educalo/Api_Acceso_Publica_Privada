@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //acceso a una api publica
+        //si hubieramos puesto .then (res => console.log(res)) nos devolveria un texto plano que no necesita mas promesas pero lo vamos hacer en formato json por lo que necesitamos otra promesa
+        /*
+        fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+            .then (res => res.json())
+            .then (response => (
+                console.log(response)
+            ))
+        */
+
+
+
+        
+        //acceso a una api que no es publica
+        //hay que suscribirse en test endpoint
+        const url = 'https://the-weather-api.p.rapidapi.com/api/weather/madrid';
+        const options = {
+	        method: 'GET',
+	        headers: {
+		        'X-RapidAPI-Key': 'e4291673e8mshd6092ea382a9337p118bd5jsn7f70d98df458',
+		        'X-RapidAPI-Host': 'the-weather-api.p.rapidapi.com'
+	        }
+        };
+
+        //esta parte de codigo la he cambiado de rapidapi se ve mas clara de esta manera
+        try {
+	        fetch(url, options)
+	            //en formato texto
+                //.then(res => console.log(res))
+                .then(res => res.json())
+                .then (response => (
+                    console.log(response)
+                    ))
+
+            
+        } catch (error) {
+	        console.error(error);
+        }
+    </script>
+</body>
+</html>
